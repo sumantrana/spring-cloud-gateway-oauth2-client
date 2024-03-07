@@ -1,0 +1,28 @@
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+        cloud:
+          gateway: TRACE
+
+server:
+  port: 9091
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          oidc-client:
+            issuer-uri: http://127.0.0.1:9000
+        registration:
+          oidc-client:
+            authorization-grant-type: authorization_code
+            client-authentication-method: client_secret_basic
+            client-id: oidc-client
+            client-name: oidc-client
+            client-secret: AlwaysBeKind123
+            provider: oidc-client
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            scope: user.read, openid
